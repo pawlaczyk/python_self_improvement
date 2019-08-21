@@ -1,0 +1,1 @@
+helloworldWywo³anie metody bezpoœrednio na pliku bo mamy zdefiniowane __getattr__

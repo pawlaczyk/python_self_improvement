@@ -1,0 +1,65 @@
+import timeit
+"""
+WHILE jest dłuższe niż FOR
+
+Porównywanie czasu
+print(timeit.repeat(stmt='get_sum(100000)', repeat=5, number=1, globals=globals()))
+"""
+
+############################## Big-O Notation ##############################
+"""
+45n^3 + 20n^2 + 19 jeśli n==1 to dostajemy 84
+(n = 2) 84 to 459 + 19 //dodanie 19 za dużo nie zmienia w ilości obliczen
+(n = 10) 47,019 n^2 // podnisienie n^2 nie wnosi za dużo w ilosc obliczeń
+45n^3 = 45 000
+n^3 or O(N^3) //poniewać do potęgi 3 ajmuje najicej obliczęń to złożoność obliczeniowa wynosi N^3
+
+O(1) algorytm zawsze zachowa się tak samo
+O(N)
+O(N^2)
+O(log N)
+O(N log N)
+"""
+############################################################################
+
+
+def get_sum(max_sum):
+    _sum = 0
+    for i in range(1, max_sum + 1):
+        _sum += i
+    return _sum
+
+
+def get_sum_2(max_num):
+    """
+    WHILE pętl ajest dłuższa
+    :param max_num:
+    :return:
+    """
+    _sum = 0
+    i = 1
+    while i < max_num:
+        _sum += i
+        i+=1
+    return _sum
+
+
+def get_sum_3(max_num):
+    """
+    Wzór na sumę liczb
+    suma ciągu arytmetycznego Sn = (a_1 + a_n)*n/2
+    albo Sn = n(n+1)/2 bo mamy tutaj tylko liczby naturalne 1,2,3,4,...
+    """
+    return max_num * (max_num + 1) /2
+
+
+
+
+if __name__ == "__main__":
+    print("Testing get_sum")
+    print(timeit.repeat(stmt='get_sum(10000000)', repeat=5, number=1, globals=globals()))
+    print("Testing get_sum_2")
+    print(timeit.repeat(stmt='get_sum_2(10000000)', repeat=5, number=1, globals=globals()))
+    print("Testing get_sum_3")
+    print(timeit.repeat(stmt='get_sum_3(10000000)', repeat=5, number=1, globals=globals()))
+    print("End")
